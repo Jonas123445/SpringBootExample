@@ -13,8 +13,8 @@
 <artifactId>Bookshop</artifactId>
 <version>0.5-SNAPSHOT</version>
 <packaging>war</packaging>
-<name>DentRadar </name>
-<description>Ein DentRadar um die Welt zu beherrschen</description>
+<name>TestProjekt </name>
+<description>Ein TestProjekt in Spring boot</description>
 
 
 <properties>
