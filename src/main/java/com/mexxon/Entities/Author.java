@@ -14,10 +14,9 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     private String nachname;
     private String vorname;
+
 
     @OneToMany(mappedBy = "author")
     @LazyCollection(LazyCollectionOption.TRUE)

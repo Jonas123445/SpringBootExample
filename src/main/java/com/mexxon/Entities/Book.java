@@ -4,19 +4,15 @@ package com.mexxon.Entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "books")
 public class Book {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-
     private String isbn;
     private String titel;
-
-
-
     @ManyToOne
     private Author author;
 
