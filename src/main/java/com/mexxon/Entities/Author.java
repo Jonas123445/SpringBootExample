@@ -1,14 +1,20 @@
 package com.mexxon.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "author")
-public class Author {
+public class Author implements Serializable {
 
 
     @Id
@@ -20,37 +26,7 @@ public class Author {
 
     @OneToMany(mappedBy = "author")
     @LazyCollection(LazyCollectionOption.TRUE)
+    @JsonIgnore // fix the infinite recursion
     private List<Book> books ;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNachname() {
-        return nachname;
-    }
-
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
-    }
-
-    public String getVorname() {
-        return vorname;
-    }
-
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
-    }
-
-    public List<Book> getBooks() {
-        return books;
-    }
-
-    public void setBooks(List<Book> books) {
-        this.books = books;
-    }
 }

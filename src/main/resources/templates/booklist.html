@@ -1,9 +1,72 @@
-
+<!DOCTYPE html>
+<html lang="de"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Books</title>
-</head>
-<body>
-<div th:inline="text">[[${beispieltext }]]</div>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
+    <style>
+        .special {
+            padding-top:50px;
+        }
+
+    </style>
+    <title>Bookshop</title>
+</head>
+<body class="d-flex flex-column min-vh-100" >
+<header>
+
+    <nav class="navbar sticky-top navbar-dark bg-primary ">
+        <div class="container">
+                <a class="navbar-brand text-start " href="#">Cedric Bookshop  </a>
+        </div>
+    </nav>
+</header>
+
+
+
+    <div class="container special">
+        <h2 class="h2">Liste aller Bücher</h2>
+        <table class=" table table-dark table-striped table-hover">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">TITEL</th>
+                    <th scope="col">AUTHOR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr scope="row " th:if="${listBook.empty}">
+                    <td colspan="3" class="text-center">&#128546;	Keine Bücher in der Datenbank !</td>
+                </tr>
+                <tr scope="row" th:each="book: ${listBook}">
+                    <td><span th:text="${book.isbn}"> ISBN </span></td>
+                    <td><span th:text="${book.titel}"> TITEL </span></td>
+                    <td><span th:text="${book.author.nachname} + ${book.author.vorname}"> AUTHOR </span></td>
+
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class= " mt-auto footer bg-dark text-center text-white ">
+        <!-- Grid container -->
+        <div class="container p-4"></div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2022 Copyright: Cedric Ndong
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </body>
+</html>
 
