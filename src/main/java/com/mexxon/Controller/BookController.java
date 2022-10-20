@@ -39,16 +39,25 @@ public class BookController {
     }
 
 
-    @GetMapping("/allauthors")
-    public String getAllAuthors(Model model){
-        List<Author> listAuthor = authorService.getAuthorList();
-        model.addAttribute("listAuthor", listAuthor);
-        return "booklist";
+
+
+  /*  @PostMapping("/addauthor")
+    public String addAuthor( Author author,Model model){
+         authorService.addAuthor(author);
+        model.addAttribute("authorID",author.getId());
+        return "addbook";
     }
 
+   */
+
     @PostMapping("/addauthor")
-    public String addAuthor( Author author){
-         authorService.addAuthor(author);
+    public String addAuthor( Author author,Model model){
+        authorService.addAuthor(author);
+
+        Book newBook = new Book();
+        newBook.setAuthor(author);
+
+        model.addAttribute("newBook", newBook);
 
         return "addbook";
     }
@@ -69,12 +78,35 @@ public class BookController {
 
 
 // Add a Book
-    @PostMapping("/addbook")
-    public String addBook(@RequestBody Book book,Model model){
-        Book newBook = bookService.addBook(book);
-        model.addAttribute("newBook", newBook);
-        return "booklist";
+  @PostMapping("/addbook")
+    public String addBook(Book book){
+
+        bookService.addBook(book);
+
+
+
+        return "addbook";
     }
 
+
+
+ /*   @PostMapping("/addbook")
+    public ResponseEntity<Book> addBook(Book book){
+
+       Book newBook= bookService.addBook(book);
+
+
+
+        return new ResponseEntity<>(newBook,HttpStatus.OK);
+    }
+
+   */
+
+    @GetMapping("/allauthors")
+    public String getAllAuthors(Model model){
+        List<Author> listAuthor = authorService.getAuthorList();
+        model.addAttribute("listAuthor", listAuthor);
+        return "booklist";
+    }
 
 }
