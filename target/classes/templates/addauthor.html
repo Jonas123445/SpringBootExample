@@ -20,7 +20,7 @@
 
     <nav class="navbar sticky-top navbar-dark bg-primary ">
         <div class="container">
-            <a class="navbar-brand text-start " href="#">MEXXON Bookshop  </a>
+            <a class="navbar-brand text-start " href="#">Cedric Bookshop  </a>
         </div>
     </nav>
 </header>
@@ -29,22 +29,22 @@
 
 <div class="container special ">
 
-    <h2 class="h2">Ein neues Buch hinzufügen 2/2</h2>
+    <h2 class="h2">Ein neues Buch hinzufügen</h2>
     <div class="container px-5 my-5">
-        <form method="POST" >
-            <p class="h4 mb-4 text-center">Informationen über das Book</p>
+        <form method="POST" th:action="@{/books/addauthor}" th:object="${newAuthor}">
+            <p class="h4 mb-4 text-center">Informationen über den Author</p>
 
             <div class="form-group my-4">
                 <label for="firstNameInput">Vorname</label>
                 <input
                         aria-describedby="firstNameHelp" class="form-control" id="firstNameInput" placeholder="Vorname eingeben"
-                        type="text"   required>
+                        type="text"   th:field="*{vorname}" required>
 
             </div>
             <div class="form-group my-4">
                 <label for="lastNameInput">Nachname</label>
                 <input
-                        type="text"  class="form-control" id="lastNameInput"
+                        type="text" th:field="*{nachname}" class="form-control" id="lastNameInput"
                 aria-describedby="lastNameHelp" placeholder="Nachname eingeben" required>
             </div>
             <button type="submit" class="btn  btn-primary ">Speichern</button>
@@ -53,19 +53,20 @@
 
     <!--/*
         <div class="container px-5 my-5">
-            <form method="POST" th:action="@{/books/addbook}" th:object="${newBook}">
-                <p class="h4 mb-4 text-center">Informationen über das Buch </p>
+            <form method="post">
+                <p class="h4 mb-4 text-center">Informationen über das Buch</p>
 
                 <div class="form-group my-4">
                     <label for="isbnInput">ISBN</label>
                     <input
-                            type="text" th:field="*{isbn}" class="form-control" id="isbnInput"
-                            aria-describedby="firstNameHelp" placeholder="ISBN eingeben" required>
+                            type="text"  class="form-control" id="isbnInput"
+                            aria-describedby="firstNameHelp" placeholder="ISBN eingeben" required> <small
+                        id="isbnHelp" class="form-text text-muted"></small>
                 </div>
                 <div class="form-group my-4">
                     <label for="titleInput">Titel</label>
                     <input
-                            type="text" th:field="*{titel}" class="form-control" id="titleInput"
+                            type="text"  class="form-control" id="titleInput"
                             aria-describedby="lastNameHelp" placeholder="Titel eingeben" required> <small
                         id="titleHelp" class="form-text text-muted"></small>
                 </div>
@@ -89,7 +90,7 @@
     <!-- Grid container -->
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2022 Copyright: Mexxon Probearbeit powered by Cedric Ndong
+        © 2022 Copyright: Cedric Ndong
     </div>
     <!-- Copyright -->
 

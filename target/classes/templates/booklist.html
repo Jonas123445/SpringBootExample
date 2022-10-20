@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="de"  xmlns:th="http://www.thymeleaf.org">
+
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr scope="row " th:if="${listBook.empty}">
+                <tr scope="row " th:if="${listBook.isEmpty()}" >
                     <td colspan="3" class="text-center">&#128546;	Keine Bücher in der Datenbank !</td>
                 </tr>
                 <tr scope="row" th:each="book: ${listBook}">
@@ -50,6 +50,11 @@
             </tbody>
 
         </table>
+
+
+        <h3 class= "pt-3"><a th:href="@{/books/createauthor}">Buch hinzufügen</a></h3>
+
+
     </div>
 
 
